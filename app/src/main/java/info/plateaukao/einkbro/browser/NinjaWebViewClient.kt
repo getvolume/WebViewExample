@@ -143,15 +143,25 @@ class NinjaWebViewClient(
             return true
         }
 
+        val packageManager = context.packageManager
+        val browseIntent = Intent(Intent.ACTION_VIEW).setData(uri)
+
+        // handle VOLUME OPEN BANKING authentication
+        if (url.endsWith("#OPEN_AS_APPLINK")) {
+            try {
+                context.startActivity(browseIntent)
+            } catch (e: Exception) {
+                // log the error
+            }
+            return true
+        }
+
         if (url.startsWith("http")) {
-//            webView.loadUrl(url, ninjaWebView.requestHeaders)
-//            return true
             return false
         }
 
-        val packageManager = context.packageManager
-        val browseIntent = Intent(Intent.ACTION_VIEW).setData(uri)
-        if (browseIntent.resolveActivity(packageManager) != null) {
+
+            if (browseIntent.resolveActivity(packageManager) != null) {
             try {
                 context.startActivity(browseIntent)
                 return true
