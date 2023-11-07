@@ -3,7 +3,7 @@ package info.plateaukao.einkbro.util
 class Constants {
     companion object {
 //        const val DEFAULT_HOME_URL = "https://integration.web.volumepay.io/mobile-web-wide"
-        const val DEFAULT_HOME_URL = "https://volume-web-example-git-confirm-bank-auth-url-postfix-getvolume.vercel.app"
+        const val DEFAULT_HOME_URL = "https://web.volumepay.io/mobile-web-webview-test"
         const val MIME_TYPE_EPUB = "application/epub+zip"
         const val MIME_TYPE_PDF = "application/pdf"
         const val MIME_TYPE_TEXT = "text/plain"
