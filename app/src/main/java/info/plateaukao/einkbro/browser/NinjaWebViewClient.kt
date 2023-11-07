@@ -152,8 +152,7 @@ class NinjaWebViewClient(
             return false
         }
 
-
-            if (browseIntent.resolveActivity(packageManager) != null) {
+        if (browseIntent.resolveActivity(packageManager) != null) {
             try {
                 val urlWithoutFragment = url.replace("#OPEN_AS_APPLINK", "")
                 val newUri = Uri.parse(urlWithoutFragment)
