@@ -160,13 +160,13 @@ class NinjaWebViewClient(
             return false
         }
 
-
-            if (browseIntent.resolveActivity(packageManager) != null) {
+        if (browseIntent.resolveActivity(packageManager) != null) {
             try {
                 context.startActivity(browseIntent)
                 return true
             } catch (e: Exception) {
-            }
+        }
+
         }
         if (url.startsWith("intent:")) {
             try {
