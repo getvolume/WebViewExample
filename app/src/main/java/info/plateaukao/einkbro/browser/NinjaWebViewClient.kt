@@ -11,15 +11,7 @@ import android.os.Message
 import android.security.KeyChain
 import android.util.Log
 import android.view.View
-import android.webkit.ClientCertRequest
-import android.webkit.CookieManager
-import android.webkit.HttpAuthHandler
-import android.webkit.SslErrorHandler
-import android.webkit.WebResourceError
-import android.webkit.WebResourceRequest
-import android.webkit.WebResourceResponse
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -163,7 +155,10 @@ class NinjaWebViewClient(
 
             if (browseIntent.resolveActivity(packageManager) != null) {
             try {
-                context.startActivity(browseIntent)
+                val urlWithoutFragment = url.replace("#OPEN_AS_APPLINK", "")
+                val newUri = Uri.parse(urlWithoutFragment)
+                val newBrowseIntent = Intent(Intent.ACTION_VIEW).setData(newUri)
+                context.startActivity(newBrowseIntent)
                 return true
             } catch (e: Exception) {
             }
